@@ -751,6 +751,7 @@
 				return;
 			}
 			if (!options.flat) {
+				pickmeup.css('display', 'inline-block');
 				switch (options.position){
 					case 'top':
 						top -= pickmeup.outerHeight();
@@ -765,20 +766,19 @@
 						top += this.offsetHeight;
 						break;
 				}
-				if (top + pickmeup.offsetHeight > viewport.t + viewport.h) {
-					top = pos.top  - pickmeup.offsetHeight;
+				if (top + pickmeup.prop('offsetHeight') > viewport.t + viewport.h) {
+					top = pos.top  - pickmeup.prop('offsetHeight');
 				}
 				if (top < viewport.t) {
 					top = pos.top + this.offsetHeight + pickmeup.offsetHeight;
 				}
-				if (left + pickmeup.offsetWidth > viewport.l + viewport.w) {
-					left = pos.left - pickmeup.offsetWidth;
+				if (left + pickmeup.prop('offsetWidth') > viewport.l + viewport.w) {
+					left = pos.left - pickmeup.prop('offsetWidth');
 				}
 				if (left < viewport.l) {
 					left = pos.left + this.offsetWidth
 				}
 				pickmeup.css({
-					display	: 'inline-block',
 					top		: top + 'px',
 					left	: left + 'px'
 				});
